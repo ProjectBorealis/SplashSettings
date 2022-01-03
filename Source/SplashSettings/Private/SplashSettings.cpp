@@ -6,9 +6,9 @@ void FSplashSettingsModule::StartupModule()
 {
     const FString& SplashDirectory = FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() + TEXT("Splash/"));
     TArray<FString> AllSplashFiles;
-    IFileManager::Get().FindFiles(SplashFiles, *(SplashDirectory / TEXT("*.png")), true, false);
-    IFileManager::Get().FindFiles(SplashFiles, *(SplashDirectory / TEXT("*.jpg")), true, false);
-    IFileManager::Get().FindFiles(SplashFiles, *(SplashDirectory / TEXT("*.bmp")), true, false);
+    IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.png")), true, false);
+    IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.jpg")), true, false);
+    IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.bmp")), true, false);
 
     const FString& Start = GIsEditor ? TEXT("EdSplash") : TEXT("Splash");
 
