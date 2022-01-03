@@ -10,6 +10,11 @@ void FSplashSettingsModule::StartupModule()
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.jpg")), true, false);
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.bmp")), true, false);
 
+	if (!AllSplashFiles.Num())
+	{
+		return;
+	}
+
 	const TArray<FString>& SplashFiles = AllSplashFiles.FilterByPredicate([&](const FString& File) {
 #if WITH_EDITOR
         return File.StartsWith(TEXT("EdSplash"));
