@@ -12,7 +12,7 @@ void FSplashSettingsModule::StartupModule()
 
     const FString& Start = GIsEditor ? TEXT("EdSplash") : TEXT("Splash");
 
-	const TArray<FString>& SplashFiles = SplashFiles.FilterByPredicate([&](const FString& File) {
+	const TArray<FString>& SplashFiles = AllSplashFiles.FilterByPredicate([&](const FString& File) {
         return File.StartsWith(Start);
     });
 
