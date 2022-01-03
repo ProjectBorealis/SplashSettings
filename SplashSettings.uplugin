@@ -10,7 +10,7 @@
 	"DocsURL": "https://github.com/ProjectBorealis/SplashSettings/blob/main/README.md",
 	"MarketplaceURL": "",
 	"SupportURL": "https://github.com/ProjectBorealis/SplashSettings/issues",
-	"CanContainContent": true,
+	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"Installed": false,
 	"EnabledByDefault": true,
