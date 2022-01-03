@@ -13,6 +13,7 @@
 	"CanContainContent": true,
 	"IsBetaVersion": false,
 	"Installed": false,
+	"EnabledByDefault": true,
 	"Modules": [
 		{
 			"Name": "SplashSettings",
