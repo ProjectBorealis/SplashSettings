@@ -10,11 +10,6 @@ void FSplashSettingsModule::StartupModule()
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.jpg")), true, false);
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.bmp")), true, false);
 
-	if (!AllSplashFiles.Num())
-	{
-		return;
-	}
-
 	const TArray<FString>& SplashFiles = AllSplashFiles.FilterByPredicate([&](const FString& File) {
 #if WITH_EDITOR
         return File.StartsWith(TEXT("EdSplash"));
@@ -22,6 +17,11 @@ void FSplashSettingsModule::StartupModule()
 		return File.StartsWith(TEXT("Splash"));
 #endif
     });
+
+	if (!SplashFiles.Num())
+	{
+		return;
+	}
 
     FGenericPlatformSplash::SetCustomSplashImage(*FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() / TEXT("Splash") / SplashFiles[FMath::RandRange(0, SplashFiles.Num() - 1)]));
 }
