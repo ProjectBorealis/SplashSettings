@@ -4,7 +4,7 @@
 
 void FSplashSettingsModule::StartupModule()
 {
-    const FString& SplashDirectory = FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() + TEXT("Splash/"));
+    const FString& SplashDirectory = FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() / TEXT("Splash"));
     TArray<FString> AllSplashFiles;
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.png")), true, false);
     IFileManager::Get().FindFiles(AllSplashFiles, *(SplashDirectory / TEXT("*.jpg")), true, false);
@@ -18,12 +18,12 @@ void FSplashSettingsModule::StartupModule()
 #endif
     });
 
-	if (!SplashFiles.Num())
-	{
-		return;
-	}
+	const TArray<FString>::SizeType& Num = SplashFiles.Num();
 
-    FGenericPlatformSplash::SetCustomSplashImage(*FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() / TEXT("Splash") / SplashFiles[FMath::RandRange(0, SplashFiles.Num() - 1)]));
+	if (Num > 0)
+	{
+		FGenericPlatformSplash::SetCustomSplashImage(*(SplashDirectory / SplashFiles[FMath::RandRange(0, Num - 1)]));
+	}
 }
 
 IMPLEMENT_MODULE(FSplashSettingsModule, SplashSettings)
