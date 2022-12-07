@@ -1,6 +1,9 @@
 #include "SplashSettings.h"
+
 #include "CoreGlobals.h"
 #include "GenericPlatform/GenericPlatformSplash.h"
+#include "HAL/FileManager.h"
+#include "Misc/Paths.h"
 
 void FSplashSettingsModule::StartupModule()
 {
